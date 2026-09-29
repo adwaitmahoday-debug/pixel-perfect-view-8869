@@ -240,3 +240,8 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+@keyframes fs-crops { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes fs-sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes fs-tractor { from { left: -10%; } to { left: 110%; } }
+@keyframes fs-spin { to { transform: rotate(360deg); } }
