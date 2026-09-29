@@ -81,15 +81,20 @@ export function FarmBackground() {
       />
 
       {/* Layer 3 — agri-intelligence data flow */}
-      <svg className="absolute inset-0 h-full w-full opacity-40" preserveAspectRatio="none">
+      <svg
+        className="absolute inset-0 h-full w-full opacity-40"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         {[18, 42, 68, 86].map((y, i) => (
           <path
             key={y}
-            d={`M -50 ${y}% C 30% ${y - 6}%, 65% ${y + 7}%, 110% ${y - 3}%`}
+            d={`M -5 ${y} C 30 ${y - 6}, 65 ${y + 7}, 105 ${y - 3}`}
             fill="none"
             stroke="var(--leaf)"
-            strokeWidth={1}
-            strokeDasharray="6 22"
+            strokeWidth={0.15}
+            strokeDasharray="1 4"
+            vectorEffect="non-scaling-stroke"
             style={{ animation: `fs-dash ${26 + i * 7}s linear infinite`, opacity: 0.5 }}
           />
         ))}
