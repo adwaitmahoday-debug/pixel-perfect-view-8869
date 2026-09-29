@@ -1,74 +1,84 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Sprout } from "lucide-react";
+import { Sprout, BarChart3, TrendingUp, Brain, Home, Zap } from "lucide-react";
 import { FarmBackground } from "@/components/FarmBackground";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/predict", label: "Predict" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/market", label: "Market" },
-  { to: "/model", label: "Model" },
+  { to: "/", label: "Home", icon: Home },
+  { to: "/predict", label: "Predict", icon: Zap },
+  { to: "/dashboard", label: "Dashboard", icon: BarChart3 },
+  { to: "/market", label: "Market", icon: TrendingUp },
+  { to: "/model", label: "Model", icon: Brain },
 ] as const;
-
-const plants = ["🌾", "🌱", "🌽", "🍅"];
-
-function CropStrip() {
-  const row = Array.from({ length: 30 }, (_, i) => plants[i % 4]);
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-10 h-20 overflow-hidden" aria-hidden>
-      <div className="absolute inset-x-0 bottom-0 h-8 bg-soil/80" />
-      <div className="absolute bottom-10 animate-[fs-tractor_20s_linear_infinite] text-4xl">🚜</div>
-      <div className="absolute bottom-3 flex w-[200%] animate-[fs-crops_14s_linear_infinite]">
-        {[...row, ...row].map((p, i) => (
-          <span
-            key={i}
-            className="inline-block w-[calc(100%/60)] origin-bottom text-center text-3xl animate-[fs-sway_3s_ease-in-out_infinite]"
-            style={{ animationDelay: `${(i % 7) * 0.3}s`, animationDuration: `${2.5 + (i % 5) * 0.4}s` }}
-          >
-            {p}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen font-sans text-foreground">
       <FarmBackground />
-      <header className="sticky top-0 z-30 border-b border-border/40 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
-          <Link to="/" className="flex items-center gap-2">
-            <Sprout className="h-5 w-5 text-leaf" />
-            <span className="font-display text-lg font-semibold">
-              Farm<span className="text-wheat">Sense</span>
+
+      {/* ── Premium Navbar ── */}
+      <header className="sticky top-0 z-30 border-b border-white/[0.08] bg-background/60 backdrop-blur-2xl">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2.5 shrink-0">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/20 ring-1 ring-primary/30">
+              <Sprout className="h-4 w-4 text-leaf" />
+            </div>
+            <span className="font-display text-[1.1rem] font-bold tracking-tight">
+              Farm<span className="text-gradient-hero">Sense</span>
             </span>
           </Link>
-          <nav className="flex items-center gap-1 overflow-x-auto text-sm">
-            {nav.map((n) => (
+
+          {/* Nav links */}
+          <nav className="hidden items-center gap-0.5 text-sm md:flex">
+            {nav.map(({ to, label, icon: Icon }) => (
               <Link
-                key={n.to}
-                to={n.to}
-                className="rounded-full border border-transparent px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"
-                activeProps={{ className: "!border-primary/60 bg-primary/25 !text-foreground" }}
+                key={to}
+                to={to}
+                className="group flex items-center gap-1.5 rounded-lg border border-transparent px-3 py-1.5 text-muted-foreground transition-all duration-200 hover:border-white/10 hover:bg-white/5 hover:text-foreground"
+                activeProps={{
+                  className:
+                    "!border-primary/40 !bg-primary/15 !text-foreground shadow-[0_0_12px_oklch(0.62_0.135_146/20%)]",
+                }}
                 activeOptions={{ exact: true }}
               >
-                {n.label}
+                <Icon className="h-3.5 w-3.5 opacity-70 group-hover:opacity-100" />
+                {label}
               </Link>
             ))}
           </nav>
+
+          {/* CTA */}
           <Link
             to="/predict"
-            className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:block"
+            className="hidden shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-[0_0_20px_oklch(0.62_0.135_146/35%)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_28px_oklch(0.62_0.135_146/55%)] sm:flex"
           >
-            Get Prediction →
+            <Zap className="h-3.5 w-3.5" />
+            Get Prediction
           </Link>
         </div>
       </header>
-      <main className="relative z-20 mx-auto max-w-6xl px-4 pb-56 pt-10">{children}</main>
-      <CropStrip />
+
+      {/* ── Page content ── */}
+      <main className="relative z-20 mx-auto max-w-6xl px-4 pb-24 pt-10">{children}</main>
+
+      {/* ── Minimal footer bar ── */}
+      <footer className="relative z-20 border-t border-white/[0.06] bg-background/40 backdrop-blur-xl py-5 px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <Sprout className="h-3.5 w-3.5 text-leaf" />
+            <span>FarmSense — Intelligent Farm-to-Market Decision Engine</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>1,635 farm records</span>
+            <span className="opacity-40">·</span>
+            <span>6 districts · MP &amp; Maharashtra</span>
+            <span className="opacity-40">·</span>
+            <span className="text-leaf">Model R² = 0.71</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -96,3 +106,4 @@ export const pageHead = (title: string, description: string) => ({
     { name: "twitter:card", content: "summary" },
   ],
 });
+
