@@ -36,9 +36,9 @@ export function FarmBackground() {
   const market = Math.max(0, (progress - 0.6) / 0.4);
 
   const layers = [
-    { src: farmAerial, opacity: farm, speed: 120, anim: "fs-drift 24s ease-in-out infinite" },
-    { src: cropRows, opacity: crop, speed: 180, anim: "fs-breeze 14s ease-in-out infinite" },
-    { src: farmMarket, opacity: market, speed: 240, anim: "fs-drift 28s ease-in-out infinite" },
+    { src: farmAerial, opacity: farm, speed: 220, anim: "fs-drift 10s ease-in-out infinite" },
+    { src: cropRows, opacity: crop, speed: 320, anim: "fs-breeze 7s ease-in-out infinite" },
+    { src: farmMarket, opacity: market, speed: 420, anim: "fs-drift 13s ease-in-out infinite" },
   ];
 
   return (
