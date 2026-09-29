@@ -36,28 +36,29 @@ export function FarmBackground() {
   const market = Math.max(0, (progress - 0.6) / 0.4);
 
   const layers = [
-    { src: farmAerial, opacity: farm, speed: 220, anim: "fs-drift 10s ease-in-out infinite" },
-    { src: cropRows, opacity: crop, speed: 320, anim: "fs-breeze 7s ease-in-out infinite" },
-    { src: farmMarket, opacity: market, speed: 420, anim: "fs-drift 13s ease-in-out infinite" },
+    { src: farmAerial, opacity: farm, speed: 220, anim: "fs-drift 12s linear infinite" },
+    { src: cropRows, opacity: crop, speed: 320, anim: "fs-breeze 8s linear infinite" },
+    { src: farmMarket, opacity: market, speed: 420, anim: "fs-drift 15s linear infinite" },
   ];
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* Layer 1 — farmland environment */}
+      {/* Layer 1 — farmland environment (outer = scroll parallax, inner = endless pan) */}
       {layers.map((l, i) => (
         <div
           key={i}
-          className="absolute inset-0 will-change-transform"
+          className="absolute inset-0"
           style={{ opacity: l.opacity, transition: "opacity 600ms linear" }}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${l.src})`,
-              animation: l.anim,
-              transform: `translate3d(0, ${progress * l.speed}px, 0)`,
-            }}
-          />
+            className="absolute inset-0 will-change-transform"
+            style={{ transform: `translate3d(0, ${progress * l.speed}px, 0)` }}
+          >
+            <div
+              className="absolute -inset-[12%] bg-cover bg-center will-change-transform"
+              style={{ backgroundImage: `url(${l.src})`, animation: l.anim }}
+            />
+          </div>
         </div>
       ))}
 
