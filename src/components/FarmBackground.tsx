@@ -119,7 +119,7 @@ export function FarmBackground() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 45% at 50% 42%, oklch(0.15 0.03 150 / 55%) 0%, transparent 75%)",
+            "radial-gradient(60% 45% at 50% 42%, oklch(0.15 0.03 150 / 35%) 0%, transparent 75%)",
         }}
       />
     </div>
