@@ -5,17 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * FarmSense design system — premium AgriTech command center.
+ * All colors in oklch. Never hardcode colors in components.
  */
 
 @theme inline {
@@ -46,90 +37,70 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-leaf: var(--leaf);
+  --color-wheat: var(--wheat);
+  --color-soil: var(--soil);
+  --color-cream: var(--cream);
+  --color-canopy: var(--canopy);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  --radius: 1rem;
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Deep forest canopy base */
+  --background: oklch(0.19 0.035 148);
+  --foreground: oklch(0.96 0.012 100);
+
+  --card: oklch(0.26 0.038 150 / 45%);
+  --card-foreground: oklch(0.96 0.012 100);
+  --popover: oklch(0.22 0.036 150);
+  --popover-foreground: oklch(0.96 0.012 100);
+
+  /* Agricultural green */
+  --primary: oklch(0.62 0.135 146);
+  --primary-foreground: oklch(0.17 0.03 150);
+
+  --secondary: oklch(0.32 0.045 152);
+  --secondary-foreground: oklch(0.95 0.012 100);
+
+  --muted: oklch(0.3 0.03 150);
+  --muted-foreground: oklch(0.79 0.028 120);
+
+  /* Warm golden wheat accent */
+  --accent: oklch(0.79 0.135 82);
+  --accent-foreground: oklch(0.2 0.04 80);
+
+  --destructive: oklch(0.58 0.19 28);
+  --destructive-foreground: oklch(0.97 0.01 90);
+
+  --border: oklch(0.88 0.02 120 / 16%);
+  --input: oklch(0.88 0.02 120 / 22%);
+  --ring: oklch(0.62 0.135 146);
+
+  --leaf: oklch(0.72 0.14 138);
+  --wheat: oklch(0.82 0.12 85);
+  --soil: oklch(0.42 0.06 62);
+  --cream: oklch(0.95 0.025 92);
+  --canopy: oklch(0.25 0.04 152);
+
+  --gradient-readability: linear-gradient(
+    180deg,
+    oklch(0.17 0.035 150 / 82%) 0%,
+    oklch(0.19 0.04 150 / 62%) 45%,
+    oklch(0.15 0.03 150 / 92%) 100%
+  );
+  --gradient-hero-text: linear-gradient(
+    100deg,
+    var(--cream) 0%,
+    var(--wheat) 55%,
+    var(--leaf) 100%
+  );
+  --shadow-panel: 0 24px 60px -24px oklch(0.1 0.03 150 / 75%);
+  --shadow-glow: 0 0 0 1px oklch(0.88 0.02 120 / 12%),
+    0 18px 50px -20px oklch(0.1 0.03 150 / 80%);
 }
 
 @layer base {
@@ -140,5 +111,127 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility glass-panel {
+  background: oklch(0.28 0.04 150 / 38%);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid oklch(0.9 0.02 120 / 14%);
+  box-shadow: var(--shadow-glow);
+}
+
+@utility text-gradient-hero {
+  background-image: var(--gradient-hero-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Cinematic background animations ---------- */
+
+@keyframes fs-drift {
+  0% {
+    transform: scale(1.14) translate3d(-1.5%, -0.8%, 0);
+  }
+  50% {
+    transform: scale(1.2) translate3d(1.8%, 1%, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(-1.5%, -0.8%, 0);
+  }
+}
+
+@keyframes fs-sun {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translate3d(-8%, -4%, 0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate3d(8%, 3%, 0);
+  }
+}
+
+@keyframes fs-haze {
+  0% {
+    transform: translate3d(-6%, 0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate3d(6%, 0, 0);
+    opacity: 0.25;
+  }
+}
+
+@keyframes fs-breeze {
+  0%,
+  100% {
+    transform: scale(1.1) translate3d(0, 0, 0) skewX(0deg);
+  }
+  50% {
+    transform: scale(1.1) translate3d(0.6%, -0.4%, 0) skewX(0.25deg);
+  }
+}
+
+@keyframes fs-data-flow {
+  0% {
+    transform: translate3d(-12%, 4%, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(112%, -6%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes fs-dash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes fs-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: fs-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
